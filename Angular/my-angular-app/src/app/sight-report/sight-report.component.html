@@ -1,0 +1,54 @@
+
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 900px;">
+  
+        <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+          <h1 class="section-title ff-secondary text-start text-primary fw-normal" style="margin-bottom: 50px;">Sighting Report</h1>
+  
+                <form [formGroup]="addReportFrm" (ngSubmit)="addItem($event)">
+                            
+                    <div class="mb-3" style="display: flex; align-items: flex-start;">
+                        <label for="pDesc" class="form-label" style="margin-right: 10px;">Species Location</label>
+                        <textarea id="story" style="width: 350px;" placeholder='Please Enter Species Location here...' formControlName="location"></textarea>
+                        
+                        <div class="bg-warning" [hidden]="location?.valid || location?.untouched">
+                        <small *ngIf="location?.errors?.['pattern']">
+                            location should be between 3 and 500 letters, <b>{{location?.errors?.['pattern'].actualValue}}</b> doesn't match.
+                        </small>
+                        </div>
+                    </div>
+                      
+                      <div class="mb-3" style="display: flex; align-items: flex-start;">
+                        <label for="pDate" class="form-label" style="margin-right: 10px;">Sighting Date</label>
+                        <input type="date" id="pDate" style="width: 200px;" formControlName="date" />
+                      </div>
+                      
+                      <div class="bg-warning" [hidden]="date?.valid || location?.untouched || date?.valid || date?.untouched">
+                        
+                        <small *ngIf="date?.errors?.['required']">
+                          Sighting date is required.
+                        </small>
+                      </div>
+                      
+                    
+                    <div class="mb-3" style="display: flex; align-items: flex-start;">
+                        <label for="pImg" class="form-label" style="margin-bottom: 10px;">Species Image</label>
+                        <input type="file" (change)="uploadPhoto($event)">
+                    </div>
+                    
+                    <div style="width: 200px; margin-bottom: 10px;">
+                        <img [src]="imageUrl" style="max-width: 100%;" />
+                    </div>
+                    
+                    
+                    <button [disabled]="addReportFrm.invalid" type="submit" class="btn btn-success">Submit</button>
+                    <button class="btn btn-danger m-3" type="button" (click)="resetForm()">Reset</button>
+                    <button class="btn btn-primary m-3" type="button"(click)="onBack()" style="float: right;">Back</button> 
+                </form> 
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

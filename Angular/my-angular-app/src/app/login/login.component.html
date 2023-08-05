@@ -1,0 +1,43 @@
+              
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 900px;">
+
+  <div class="row justify-content-center">
+   
+    <div class="col-xl-6 col-md-8 col-sm-10 col-10 mx-2 mx-sm-0 wow fadeInUp" data-wow-delay="0.1s">
+        <h1 class="section-title ff-secondary text-start text-primary fw-normal">Login </h1>
+        <div >
+
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit($event)" >
+            <div  class="form-floating" >
+             
+              <input type="email" class="form-control my-3" id="email" formControlName="email">
+              <label for="email">Email address</label>
+              <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)" class="invalid-feedback">
+                <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</div>
+                <div *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid</div>
+              </div>
+            </div>
+          
+            <div class="form-floating">
+                <input type="password" class="form-control" id="password" formControlName="password">
+              <label for="password">Password</label>
+              
+              <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)" class="invalid-feedback">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+              </div>
+              <br>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-3" [disabled]="loginForm.invalid">Login</button>
+          </form>
+          <div class="d-flex justify-content-between mt-3">
+            <a routerLink="/signIn" class="btn btn-link btn-primary" >New Guardian?</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+

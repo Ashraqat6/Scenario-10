@@ -1,0 +1,45 @@
+
+<div class="container-xxl py-5">
+  <div class="container">
+    <div class="row g-5">
+      <section class="user-info bordered-green">
+        <!-- Display user information -->
+        <h1>User Details</h1>
+        <p>Name: {{ client?.userName }}</p>
+        <p>Email: {{ client?.email }}</p>
+        <p>Phone: {{ client?.phone }}</p>
+      </section>
+
+      <section class="sighting-reports">
+        <!-- Show the user's sighting reports -->
+        <h2>Sighting Reports</h2>
+
+        <div *ngFor="let report of client?.reports">
+          <div class="container-fluid bg-white">
+            <div class="row m-1 mt-0 gx-1">
+              <div class="card col-md-12 mt-5 mb-3">
+                <div class="card-body">
+                  <div class="mb-4 mt-0">
+                    <h5 class="card-title mb-0">{{ report.speciesName }}</h5>
+                  </div>
+                  <div class="card-text">
+                    <ul class="list-unstyled">
+                      <div class="team-item rounded" style="height: 12rem;">
+                        <a href="{{ report.img }}" target="_blank">
+                          <img class="img-fluid" src="{{ report.img }}" alt="" style="height: 10rem; width: 12rem;">
+                        </a>
+                      </div>
+                      <li>Species name: {{ report.speciesName }}</li>
+                      <li>Location: {{ report.location }}</li>
+                      <li>Report Date: {{ report.date | date: 'yyyy-MM-dd' }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

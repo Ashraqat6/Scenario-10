@@ -1,0 +1,107 @@
+<!-- Carousel Start -->
+<div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel"> 
+                <img class="w-100" src="../../assets/img/home page.jpeg" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <h1 class="display-1 text-white mb-5 animated slideInDown">Share Your Wildlife Sightings with the World</h1>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+    </div>
+</div>
+<!-- Carousel End -->  
+
+ <!-- Service Start -->
+ <div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold text-primary">About US</p>
+            <h1 class="display-5 mb-5">Services That We Offer For You</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded d-flex h-100">
+                    
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="assets/img/icon/icon-2.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">About Us</h4>
+                        <p class="mb-4">Welcome to Nature Guardian the platform dedicated to connecting nature enthusiasts and wildlife lovers like you.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item rounded d-flex h-100">
+                    
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="assets/img/icon/icon-2.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Our Mission</h4>
+                        <p class="mb-4">Our mission is to encourage people to become active contributors to nature preservation by reporting their wildlife sightings.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="assets/img/icon/icon-2.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Why Report Wildlife Sightings?</h4>
+                        <p class="mb-4">Our wildlife sightings provide crucial data that can help researchers, biologists, 
+                            and conservationists better understand the distribution and behavior of various species.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold text-primary">Our Species</p>
+            <h1 class="display-6 mb-5">Share Your Wildlife Sightings: Spot any of these fascinating species? Report it!</h1>
+        </div>
+        <div class="d-flex justify-content-end mb-4">
+            <form class="d-flex me-2" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (input)="onSearch($event)">
+              <button class="btn btn-outline-success" type="button" (click)="clearSearch()">Clear</button>
+            </form>
+          </div>
+          
+          <div class="row g-4">
+            <div
+              class="col-lg-4 col-md-6 wow fadeInUp"
+              data-wow-delay="0.1s"
+              *ngFor="let item of filteredSpecies"
+            >
+                <div class="team-item rounded" style="height:25rem;">
+                    <img class="img-fluid" src={{item.img}} alt="" style="height:20rem; width: 22rem;">
+                    <div class="team-text">
+                        <h4 class="mb-0">{{item.name}} </h4>
+                        <p class="text-primary">Scientific Name: {{item.scientificName}}</p>
+                        <p class="text-primary">Status: {{item.status}}</p>
+
+                        <div class="team-social d-flex">
+                            <a (click)="checkAuth(item.id)" class="btn btn-primary py-3 px-4 rounded me-2">Give a sight report</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+

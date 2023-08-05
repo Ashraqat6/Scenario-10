@@ -1,0 +1,78 @@
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 1200px;">
+
+        <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+          <h1 class="section-title ff-secondary text-start text-primary fw-normal" *ngIf="showSection">Hi Chef </h1>
+  
+          <h1 class="section-title ff-secondary text-start text-primary fw-normal" *ngIf="!showSection">Register </h1>
+          <form #myForm="ngForm" class="needs-validation align-items-center" (ngSubmit)="registerUser()" novalidate>
+            
+            <div class="row g-3 py-4">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="name" placeholder="Your Name"  required [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}">
+                  <label for="name">Your Name</label>
+                  <span *ngIf="!user.name || user.name.trim() === ''" >
+                  
+                    Please provide a  name.
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="email" placeholder="Your Email"  required [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}">
+                  <label for="email">Your Email</label>
+                  <span  *ngIf="!user.email || !isValidEmail(user.email)">
+                    Please provide a valid email address.
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating" id="phonenumber" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" id="phonenumber" [(ngModel)]="user.mobile" [ngModelOptions]="{standalone: true}"  required>
+                  <label for="phonenumber">Phone number</label>
+                  <span  *ngIf="!isValidPhoneNumber(user.mobile)">
+                    Please provide a valid phone number with 11 digits.
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" id="select1" [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}"  required>
+                    <option value="">Choose...</option>
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                  </select>
+                  <label for="select1">Gender</label>
+                  <span  *ngIf="!user.gender">
+                    Please select a gender.
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating" id="Password" data-target-input="nearest">
+                  <input type="password" class="form-control datetimepicker-input" id="Password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"  required>
+                  <label for="Password">Password</label>
+                  <span  *ngIf="!isValidPassword(user.password)">
+                    Please provide a valid password is at least 6 characters long, has one uppercase letter, one lowercase letter, and one special character.
+                    <!-- {{user.password}} -->
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating" id="confirmPassword" data-target-input="nearest"  >
+                  <input type="password" class="form-control datetimepicker-input" id="confirmPassword" [(ngModel)]="user.confirmPassword" [ngModelOptions]="{standalone: true}" required>
+                  <label for="confirmPassword">Confirm your Password</label>
+                  <span  *ngIf="!isValidConfirmPassword(user.password, user.confirmPassword)">
+                    Please make sure your passwords match.
+                    
+                  </span>
+                </div>
+              </div>
+
+              <div class="col-12 align-items-center mt-5">
+                <button class="btn btn-primary w-25 text-center py-3 align-items-center" type="submit" [disabled]="!registerEnable()">Register Now</button>
+              </div> 
+            </div>
+          </form>

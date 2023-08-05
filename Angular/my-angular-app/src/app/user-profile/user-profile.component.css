@@ -1,0 +1,7 @@
+/* Add a green border to the user-info section */
+.bordered-green {
+    border: 2px solid green;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  

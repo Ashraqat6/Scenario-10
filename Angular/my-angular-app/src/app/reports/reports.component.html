@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-end mb-4">
+  <form class="d-flex me-2" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" (input)="onSearch($event)">
+    <button class="btn btn-outline-success" type="button" (click)="clearSearch()">Clear</button>
+  </form>
+</div>
+
+<div  *ngFor="let Report of reports">
+    <div class="container-fluid d-flex justify-content-center bg-white">
+      <div class="col-8 mx-auto">
+        <div class="row m-1 mt-0 gx-1">
+          <div class="card col-md-12 mt-5 mb-3">
+            <div class="card-body">
+              <div class="mb-4 mt-0">
+                <h5 class="card-title mb-0">{{Report.speciesName}}</h5>
+              </div>
+              <div class="card-text">
+                <ul class="list-unstyled">
+                  <div class="team-item rounded" style="height: 12rem;">
+                    <a href="{{ Report.img }}" target="_blank">
+                      <img class="img-fluid" src="{{ Report.img }}" alt="" style="height: 10rem; width: 12rem;">
+                    </a>
+                  </div>
+                  
+                <li>Species name: {{Report.speciesName}}</li>
+                <li>Location: {{Report.location}}</li>
+                <li>Report Date: {{Report.date | date: 'yyyy-MM-dd'}}</li>
+              </ul>
+            </div>
+            </div>
+          </div>
+    </div>
+    </div>
+    </div>
+</div>
